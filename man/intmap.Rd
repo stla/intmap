@@ -12,6 +12,7 @@ A map is given by keys and values.
 ## Method `intmap$new`
 ## ------------------------------------------------
 
+intmap$new() # empty map
 intmap$new(
   keys = c(4, -2), 
   values = list(c(1, 2), c("a", "b", "c"))
@@ -217,7 +218,7 @@ imap
 \subsection{Method \code{new()}}{
 Creates a new \code{intmap} object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{intmap$new(keys, values)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{intmap$new(keys = NULL, values)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -235,7 +236,8 @@ An \code{intmap} object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{intmap$new(
+\preformatted{intmap$new() # empty map
+intmap$new(
   keys = c(4, -2), 
   values = list(c(1, 2), c("a", "b", "c"))
 )

@@ -36,6 +36,7 @@ intmap <- R6Class(
     #' @return An \code{intmap} object.
     #'
     #' @examples
+    #' intmap$new() # empty map
     #' intmap$new(
     #'   keys = c(4, -2), 
     #'   values = list(c(1, 2), c("a", "b", "c"))
@@ -45,17 +46,21 @@ intmap <- R6Class(
     #'   keys = c(1, 1, 5), 
     #'   values = list(c(1, 2), c(3, 4), "x")
     #' )
-    initialize = function(keys, values) {
-      keys <- as.integer(keys)
-      if(any(is.na(keys))) {
-        stop("Keys cannot contain missing values.")
+    initialize = function(keys = NULL, values) {
+      if(length(keys) == 0L) {
+        IMAP <- new("INTMAP", integer(0L), list())
+      } else {
+        keys <- as.integer(keys)
+        if(any(is.na(keys))) {
+          stop("Keys cannot contain missing values.")
+        }
+        stopifnot(
+          is.list(values),
+          length(keys) == length(values)
+        )
+        ord <- order(keys)
+        IMAP <- new("INTMAP", keys[ord], values[ord])
       }
-      stopifnot(
-        is.list(values),
-        length(keys) == length(values)
-      )
-      ord <- order(keys)
-      IMAP <- new("INTMAP", keys[ord], values[ord])
       private[[".map"]] <- IMAP
       invisible(NULL)
     },
