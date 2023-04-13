@@ -19,7 +19,7 @@ isString <- function(x){
 }
 
 isIntegerVector <- function(x){
-  isVector(x) && all(isInteger(x))
+  isVector(x) && all(vapply(x, isInteger, FUN.VALUE = logical(1L)))
 }
 
 isNumericVector <- function(x){
