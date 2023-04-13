@@ -79,6 +79,16 @@ maybe::from_just(imap$at(-2))
 imap$at(4)
 
 ## ------------------------------------------------
+## Method `intmap$get`
+## ------------------------------------------------
+
+imap <- intmap$new(
+  keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
+)
+imap$get(11, default = 999)
+imap$get(4, default = 999)
+
+## ------------------------------------------------
 ## Method `intmap$index`
 ## ------------------------------------------------
 
@@ -190,6 +200,7 @@ imap
 \item \href{#method-intmap-items}{\code{intmap$items()}}
 \item \href{#method-intmap-toList}{\code{intmap$toList()}}
 \item \href{#method-intmap-at}{\code{intmap$at()}}
+\item \href{#method-intmap-get}{\code{intmap$get()}}
 \item \href{#method-intmap-index}{\code{intmap$index()}}
 \item \href{#method-intmap-extract}{\code{intmap$extract()}}
 \item \href{#method-intmap-has_key}{\code{intmap$has_key()}}
@@ -405,6 +416,42 @@ A \code{maybe} value, either the value corresponding to the key
 imap$at(11)
 maybe::from_just(imap$at(-2))
 imap$at(4)
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-intmap-get"></a>}}
+\if{latex}{\out{\hypertarget{method-intmap-get}{}}}
+\subsection{Method \code{get()}}{
+Get the value corresponding to the given key or a default 
+  value if this key is missing.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{intmap$get(key, default = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{a key (integer)}
+
+\item{\code{default}}{a R object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Either the value corresponding to the key if the key is found, 
+  otherwise the \code{default} value.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{imap <- intmap$new(
+  keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
+)
+imap$get(11, default = 999)
+imap$get(4, default = 999)
 }
 \if{html}{\out{</div>}}
 

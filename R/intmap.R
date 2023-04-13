@@ -5,7 +5,7 @@
 #' @export
 #' @importFrom R6 R6Class
 #' @importFrom methods new
-#' @importFrom maybe just nothing from_just
+#' @importFrom maybe just nothing from_maybe
 intmap <- R6Class(
   
   "intmap",
@@ -166,6 +166,26 @@ intmap <- R6Class(
     at = function(key) {
       stopifnot(isInteger(key))
       private[[".map"]]$at(as.integer(key))
+    },
+
+    #' @description Get the value corresponding to the given key or a default 
+    #'   value if this key is missing.
+    #'
+    #' @param key a key (integer)
+    #' @param default a R object
+    #'
+    #' @return Either the value corresponding to the key if the key is found, 
+    #'   otherwise the \code{default} value.
+    #' 
+    #' @examples
+    #' imap <- intmap$new(
+    #'   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
+    #' )
+    #' imap$get(11, default = 999)
+    #' imap$get(4, default = 999)
+    get = function(key, default = NULL) {
+      stopifnot(isInteger(key))
+      from_maybe(private[[".map"]]$at(as.integer(key)), default)
     },
     
     #' @description Returns the index of the given key.
