@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE$
+^\.Rprofile$
+^\.github$
+^inst/trash$
+^inst/exposeClass$
