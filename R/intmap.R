@@ -19,7 +19,7 @@ intmap <- R6Class(
   private = list(
     .map = NULL,
     .ptrinit = function(ptr) {
-      map <- intmap$new(character(0L), list(), checks = FALSE)
+      map <- intmap$new(character(0L), list())
       map[[".__enclos_env__"]][["private"]][[".map"]] <- new("INTMAP", ptr)
       map
     }
@@ -54,7 +54,8 @@ intmap <- R6Class(
         is.list(values),
         length(keys) == length(values)
       )
-      IMAP <- new("INTMAP", sort(keys), values)
+      ord <- order(keys)
+      IMAP <- new("INTMAP", keys[ord], values[ord])
       private[[".map"]] <- IMAP
       invisible(NULL)
     },
@@ -342,10 +343,10 @@ intmap <- R6Class(
     #' imap <- intmap$new(
     #'   keys = c(11, -2, 3), values = list(c("a", "b"), list(3, 4, 5), "X")
     #' )
-    #' map$erase(11)
-    #' map
-    #' map$erase(c(-2, 3))
-    #' map
+    #' imap$erase(11)
+    #' imap
+    #' imap$erase(c(-2, 3))
+    #' imap
     erase = function(keys) {
       stopifnot(isIntegerVector(keys))
       if(length(keys) == 1L) {

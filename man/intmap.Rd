@@ -147,10 +147,10 @@ imap
 imap <- intmap$new(
   keys = c(11, -2, 3), values = list(c("a", "b"), list(3, 4, 5), "X")
 )
-map$erase(11)
-map
-map$erase(c(-2, 3))
-map
+imap$erase(11)
+imap
+imap$erase(c(-2, 3))
+imap
 
 ## ------------------------------------------------
 ## Method `intmap$merge`
@@ -633,10 +633,10 @@ Nothing, this updates the map.
 \preformatted{imap <- intmap$new(
   keys = c(11, -2, 3), values = list(c("a", "b"), list(3, 4, 5), "X")
 )
-map$erase(11)
-map
-map$erase(c(-2, 3))
-map
+imap$erase(11)
+imap
+imap$erase(c(-2, 3))
+imap
 }
 \if{html}{\out{</div>}}
 
