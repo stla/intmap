@@ -2,10 +2,9 @@ Type: Package
 Package: intmap
 Title: Ordered Containers with Integer Keys
 Version: 1.0.0.9001
-Date: 2022-03-26
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: Provides a a key-value store data structure. The keys are
+Description: Provides a key-value store data structure. The keys are
     integers and the values can be any R object. This is like a list but
     indexed by a set of integers, not necessarily contiguous and possible
     negative.
