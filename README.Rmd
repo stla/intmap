@@ -1,0 +1,79 @@
+---
+title: "intmap"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(intmap)
+```
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/stla/intmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/intmap/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+*Ordered containers with integer keys.*
+
+___
+
+- Create a new integer map.
+
+```{r}
+imap <- intmap$new(
+  keys = c(11, -2), values = list(c("a", "b"), list(333, 4444, 55555))
+)
+imap
+```
+
+- How many entries are there in the map?
+
+```{r}
+imap$size()
+```
+
+- Get the keys (always ordered) and the values.
+
+```{r}
+imap$keys()
+imap$values()
+```
+
+- Get the item of a given key.
+
+```{r}
+imap$at(5)
+imap$at(11)
+from_just(imap$at(11))
+```
+
+- Or use the `get` method with a default value.
+
+```{r}
+imap$get(5, default = "I am missing.")
+imap$get(-2)
+```
+
+- Insert new entries.
+
+```{r}
+imap$insert(5, "I am not missing.")
+imap
+```
+
+- Get a submap.
+
+```{r}
+imap$extract(c(5, 11, 99999))
+```
+
+- Merge with another map.
+
+```{r}
+imap2 <- intmap$new(
+  c(-2, 0, 1),
+  list("I will be ignored", iris, mtcars)
+)
+imap$merge(imap2)
+imap
+```
+

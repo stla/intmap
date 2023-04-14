@@ -6,3 +6,4 @@
 ^inst/trash$
 ^inst/exposeClass$
 ^inst/benchmarks$
+^README\.Rmd$
