@@ -35,5 +35,6 @@ RCPP_MODULE(class_INTMAP) {
       .method("extract_inplace", &INTMAP::extract_inplace)
       .method("extract_by_erasing", &INTMAP::extract_by_erasing)
       .method("extract_by_erasing_inplace", &INTMAP::extract_by_erasing_inplace)
+
       .finalizer(&finalizer_of_intmap);
 }

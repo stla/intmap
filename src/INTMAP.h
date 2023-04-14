@@ -100,7 +100,6 @@ class INTMAP {
 
   void erase(int key) {
     intmap.erase(key);
-    //     intmapPTR = Rcpp::XPtr<intmapR>(new intmapR(intmap));
   }
 
   void merase(Rcpp::IntegerVector keys) {
@@ -111,17 +110,15 @@ class INTMAP {
 
   Rcpp::XPtr<intmapR> extract(Rcpp::IntegerVector keys) {
     intmapR submap;
-    // intmapR* submapptr = &submap;
     for(int key : keys) {
       intmapR::iterator it = intmap.find(key);
       if(it != intmap.end()) {
         submap.emplace(key, it->second);
       }
     }
-    intmapR* submapptr(new intmapR(submap));  //&submap;
+    intmapR* submapptr(new intmapR(submap));
     Rcpp::XPtr<intmapR> out = Rcpp::XPtr<intmapR>(submapptr, false);
-    //    delete submapptr;
-    return out;  // new intmapR(submap), true);
+    return out;
   }
 
   void extract_inplace(Rcpp::IntegerVector keys) {
@@ -157,9 +154,7 @@ class INTMAP {
   }
 
   void merge(Rcpp::XPtr<intmapR> intmap2ptr) {
-    // intmapR intmap1 = *intmapPTR;
     intmapR intmap2 = *(intmap2ptr.get());
     intmap.merge(intmap2);
-    //   intmapPTR = Rcpp::XPtr<intmapR>(new intmapR(intmap));
   }
 };

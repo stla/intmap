@@ -5,7 +5,6 @@
 intmapR intmapNew(Rcpp::IntegerVector keys, Rcpp::List values) {
   intmapR intmap;
   for(R_xlen_t i = 0; i < keys.size(); i++) {
-    // SEXP v = values[i];
     intmap.emplace(keys[i], values[i]);
   }
   return intmap;
