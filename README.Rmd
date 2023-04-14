@@ -54,7 +54,7 @@ imap$get(5, default = "I am missing.")
 imap$get(-2)
 ```
 
-- Insert new entries.
+- Insert a new entry.
 
 ```{r}
 imap$insert(5, "I am not missing.")

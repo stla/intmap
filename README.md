@@ -80,7 +80,7 @@ imap$get(-2)
 ## [1] 55555
 ```
 
-- Insert new entries.
+- Insert a new entry.
 
 ``` r
 imap$insert(5, "I am not missing.")
