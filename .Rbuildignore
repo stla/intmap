@@ -7,3 +7,4 @@
 ^inst/exposeClass$
 ^inst/benchmarks$
 ^README\.Rmd$
+^cran-comments\.md$

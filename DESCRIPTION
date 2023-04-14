@@ -1,7 +1,7 @@
 Type: Package
 Package: intmap
 Title: Ordered Containers with Integer Keys
-Version: 1.0.0.9001
+Version: 1.0.0
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides a key-value store data structure. The keys are
