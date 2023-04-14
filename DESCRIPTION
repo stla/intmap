@@ -1,16 +1,24 @@
-Package: intmap
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Package: intmap
+Title: Ordered Containers with Integer Keys
 Version: 1.0.0.9001
 Date: 2022-03-26
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: One paragraph description of what the package does as one or more
-         full sentences.
-Encoding: UTF-8
+Description: Provides a a key-value store data structure. The keys are
+    integers and the values can be any R object. This is like a list but
+    indexed by a set of integers, not necessarily contiguous and possible
+    negative.
 License: GPL-3
-Imports: Rcpp (>= 1.0.8), methods, R6, maybe
-LinkingTo: Rcpp, BH
 URL: https://github.com/stla/intmap
 BugReports: https://github.com/stla/intmap/issues
+Imports: 
+    maybe,
+    methods,
+    R6,
+    Rcpp (>= 1.0.8)
+LinkingTo: 
+    BH,
+    Rcpp
+Encoding: UTF-8
 RoxygenNote: 7.2.3
