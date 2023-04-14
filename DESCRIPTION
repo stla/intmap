@@ -6,8 +6,10 @@ Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides a key-value store data structure. The keys are
     integers and the values can be any R object. This is like a list but
-    indexed by a set of integers, not necessarily contiguous and possible
-    negative.
+    indexed by a set of integers, not necessarily contiguous and possibly
+    negative. The implementation uses a 'R6' class. These containers are 
+    not faster than lists but their usage can be more convenient for 
+    certain situations.
 License: GPL-3
 URL: https://github.com/stla/intmap
 BugReports: https://github.com/stla/intmap/issues
