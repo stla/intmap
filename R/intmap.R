@@ -284,8 +284,8 @@ intmap <- R6Class(
     #' imap <- intmap$new(
     #'   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
     #' )
-    #' map$has_key(11)
-    #' map$has_key(1)
+    #' imap$has_key(11)
+    #' imap$has_key(1)
     has_key = function(key) {
       stopifnot(isInteger(key))
       private[[".map"]]$has_key(as.integer(key))

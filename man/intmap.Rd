@@ -123,8 +123,8 @@ imap_copy
 imap <- intmap$new(
   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
 )
-map$has_key(11)
-map$has_key(1)
+imap$has_key(11)
+imap$has_key(1)
 
 ## ------------------------------------------------
 ## Method `intmap$nth`
@@ -564,8 +564,8 @@ A Boolean value.
 \preformatted{imap <- intmap$new(
   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
 )
-map$has_key(11)
-map$has_key(1)
+imap$has_key(11)
+imap$has_key(1)
 }
 \if{html}{\out{</div>}}
 
