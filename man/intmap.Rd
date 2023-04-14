@@ -76,7 +76,7 @@ imap <- intmap$new(
   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
 )
 imap$at(11)
-maybe::from_just(imap$at(-2))
+from_just(imap$at(11))
 imap$at(4)
 
 ## ------------------------------------------------
@@ -375,7 +375,7 @@ Converts the map to a named list.
 }
 
 \subsection{Returns}{
-A named list.
+A named list (the names are the keys).
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -416,7 +416,7 @@ A \code{maybe} value, either the value corresponding to the key
   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
 )
 imap$at(11)
-maybe::from_just(imap$at(-2))
+from_just(imap$at(11))
 imap$at(4)
 }
 \if{html}{\out{</div>}}
@@ -439,7 +439,7 @@ Get the value corresponding to the given key or a default
 \describe{
 \item{\code{key}}{a key (integer)}
 
-\item{\code{default}}{a R object}
+\item{\code{default}}{a R object, the default value}
 }
 \if{html}{\out{</div>}}
 }
@@ -518,7 +518,7 @@ from the empty submap and adding the entries}
 }
 \subsection{Returns}{
 An \code{intmap} object if \code{inplace=FALSE}, 
-  nothing otherwise.
+  otherwise the updated reference map, invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -670,12 +670,13 @@ Erase the entries of the reference map whose keys are the
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{keys}}{some keys, an integer vector}
+\item{\code{keys}}{some keys, an integer vector; those which do not belong to
+the keys of the reference map are ignored}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-Nothing, this updates the map.
+The reference map, invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -709,7 +710,7 @@ Merge the reference map with another map.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-Nothing, this updates the reference map.
+The updated reference map, invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}

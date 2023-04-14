@@ -139,7 +139,7 @@ intmap <- R6Class(
     
     #' @description Converts the map to a named list.
     #'
-    #' @return A named list.
+    #' @return A named list (the names are the keys).
     #'
     #' @examples
     #' imap <- intmap$new(
@@ -166,7 +166,7 @@ intmap <- R6Class(
     #'   keys = c(11, -2), values = list(c("a", "b"), list(3, 4, 5))
     #' )
     #' imap$at(11)
-    #' maybe::from_just(imap$at(-2))
+    #' from_just(imap$at(11))
     #' imap$at(4)
     at = function(key) {
       stopifnot(isInteger(key))
@@ -177,7 +177,7 @@ intmap <- R6Class(
     #'   value if this key is missing.
     #'
     #' @param key a key (integer)
-    #' @param default a R object
+    #' @param default a R object, the default value
     #'
     #' @return Either the value corresponding to the key if the key is found, 
     #'   otherwise the \code{default} value.
@@ -226,7 +226,7 @@ intmap <- R6Class(
     #'   from the empty submap and adding the entries 
     #'
     #' @return An \code{intmap} object if \code{inplace=FALSE}, 
-    #'   nothing otherwise.
+    #'   otherwise the updated reference map, invisibly.
     #'
     #' @examples
     #' imap <- intmap$new(
@@ -249,7 +249,7 @@ intmap <- R6Class(
       if(length(keys) == 0L) {
         if(inplace) {
           private[[".map"]] <- new("INTMAP", integer(0L), list())
-          invisible(NULL)
+          invisible(self)
         } else {
           intmap$new(integer(0L), list())
         }
@@ -257,7 +257,7 @@ intmap <- R6Class(
         if(bydeleting) {
           if(inplace) {
             private[[".map"]]$extract_by_erasing_inplace(keys)
-            invisible(NULL)
+            invisible(self)
           } else {
             ptr <- private[[".map"]]$extract_by_erasing(keys)
             private[[".ptrinit"]](ptr)
@@ -265,7 +265,7 @@ intmap <- R6Class(
         } else {
           if(inplace) {
             private[[".map"]]$extract_inplace(keys)
-            invisible(NULL)
+            invisible(self)
           } else {
             ptr <- private[[".map"]]$extract(keys)
             private[[".ptrinit"]](ptr)
@@ -360,9 +360,10 @@ intmap <- R6Class(
     #' @description Erase the entries of the reference map whose keys are the 
     #'   given ones.
     #'
-    #' @param keys some keys, an integer vector
+    #' @param keys some keys, an integer vector; those which do not belong to
+    #'   the keys of the reference map are ignored
     #'
-    #' @return Nothing, this updates the map.
+    #' @return The reference map, invisibly.
     #'
     #' @examples
     #' imap <- intmap$new(
@@ -379,14 +380,14 @@ intmap <- R6Class(
       } else if(length(keys) >= 2L) {
         private[[".map"]]$merase(as.integer(keys))
       }
-      invisible(NULL)
+      invisible(self)
     },
     
     #' @description Merge the reference map with another map.
     #'
     #' @param map an \code{intmap} object
     #'
-    #' @return Nothing, this updates the reference map.
+    #' @return The updated reference map, invisibly.
     #'
     #' @examples
     #' imap1 <- intmap$new(
@@ -401,7 +402,7 @@ intmap <- R6Class(
       stopifnot(inherits(map, "intmap"))
       .map2 <- map[[".__enclos_env__"]][["private"]][[".map"]]
       private[[".map"]]$merge(.map2$ptr)
-      invisible(NULL)
+      invisible(self)
     },
     
     #' @description Copy the reference map.
