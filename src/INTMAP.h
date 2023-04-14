@@ -117,7 +117,7 @@ class INTMAP {
       }
     }
     intmapR* submapptr(new intmapR(submap));
-    Rcpp::XPtr<intmapR> out = Rcpp::XPtr<intmapR>(submapptr, false);
+    Rcpp::XPtr<intmapR> out(submapptr, false);
     return out;
   }
 
@@ -140,7 +140,7 @@ class INTMAP {
         submap.erase(it->first);
       }
     }
-    Rcpp::XPtr<intmapR> out = Rcpp::XPtr<intmapR>(new intmapR(submap), false);
+    Rcpp::XPtr<intmapR> out(new intmapR(submap), false);
     delete submapptr;
     return out;
   }
