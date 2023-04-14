@@ -387,7 +387,9 @@ intmap <- R6Class(
     #'
     #' @param map an \code{intmap} object
     #'
-    #' @return The updated reference map, invisibly.
+    #' @return The updated reference map, invisibly. Keys of \code{map} that 
+    #'   are also keys of the reference map are ignored, i.e. there is no 
+    #'   replacement, only insertions.
     #'
     #' @examples
     #' imap1 <- intmap$new(

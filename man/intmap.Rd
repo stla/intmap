@@ -710,7 +710,9 @@ Merge the reference map with another map.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated reference map, invisibly.
+The updated reference map, invisibly. Keys of \code{map} that 
+  are also keys of the reference map are ignored, i.e. there is no 
+  replacement, only insertions.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}

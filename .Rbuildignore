@@ -5,3 +5,4 @@
 ^\.github$
 ^inst/trash$
 ^inst/exposeClass$
+^inst/benchmarks$
