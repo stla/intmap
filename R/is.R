@@ -19,7 +19,8 @@ isString <- function(x){
 }
 
 isIntegerVector <- function(x){
-  isVector(x) && all(vapply(x, isInteger, FUN.VALUE = logical(1L)))
+  isVector(x) && is.numeric(x) && 
+    all(vapply(x, function(y) {as.integer(y) == y}, FUN.VALUE = logical(1L)))
 }
 
 isNumericVector <- function(x){
